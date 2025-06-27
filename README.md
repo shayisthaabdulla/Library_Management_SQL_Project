@@ -32,13 +32,79 @@ The dataset mimics real-world scenarios where SQL is used to generate usage repo
 
 ## 🧱 Project Structure
 
-- **Database Setup**
+**Database Setup**
+**Database Name**: 'library_management'
+Built using PostgreSQL 
+
+**Table Creation**
+Six core tables represent library management:
+
   - `librarians`: Stores librarian contact details
   - `students`: Registered students and their approval status
   - `books`: Catalog of available books with genres and stock count
   - `book_issues`: Transactions of issued/returned books
   - `approvals`: Manual approvals processed by librarians
   - `logs`: Record of book actions (issued/returned) by students
+
+ ```sql
+  -- Table: librarians
+
+CREATE TABLE librarians (
+    librarian_id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(100),
+    phone VARCHAR(20)
+);
+
+-- Table: students
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    registered_date DATE,
+    approved_by INT
+);
+
+-- Table: books
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(100),
+    genre VARCHAR(50),
+    published_year INT,
+    copies_available INT
+);
+
+-- Table: book_issues
+CREATE TABLE book_issues (
+    issue_id INT PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    book_id INT REFERENCES books(book_id),
+    issue_date DATE,
+    return_date DATE,
+    returned BOOLEAN
+);
+
+-- Table: approvals
+CREATE TABLE approvals (
+    approval_id INT PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    approval_type VARCHAR(50),
+    request_date DATE,
+    status VARCHAR(20),
+    processed_by INT REFERENCES librarians(librarian_id)
+);
+
+-- Table: logs
+CREATE TABLE logs (
+    log_id INT PRIMARY KEY,
+    student_id INT REFERENCES students(student_id),
+    book_id INT REFERENCES books(book_id),
+    action VARCHAR(20),
+    timestamp TIMESTAMP
+);
+```
 
 ## 🧮 SQL Query Categories
 
