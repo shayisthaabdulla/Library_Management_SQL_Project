@@ -338,7 +338,3 @@ WHERE b.returned = 'true' AND b.return_date > b.issue_date + INTERVAL '30 days';
 SELECT book_id FROM book_issues GROUP BY book_id HAVING COUNT(DISTINCT student_id) > 10;
 ```
 
-53. Issue records where return date is before issue date
-```sql
-SELECT * FROM book_issues WHERE return_date < issue_date;
-```
