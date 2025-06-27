@@ -40,11 +40,7 @@ The dataset mimics real-world scenarios where SQL is used to generate usage repo
   - `approvals`: Manual approvals processed by librarians
   - `logs`: Record of book actions (issued/returned) by students
 
-- **Sample Data**
-  - 1000+ rows per table
-  - Includes intentionally missing or invalid records (e.g. books never returned, students with no issues)
-
-## 🧮 SQL Query Categories (52 Total)
+## 🧮 SQL Query Categories
 
 Each query is available in the [📄 `library_sql_queries.md`](https://github.com/shayisthaabdulla/Library_Management_SQL_Project/blob/main/library_sql_queries.md) file and tested against the PostgreSQL-compatible dataset.
 
@@ -89,20 +85,32 @@ WHERE b.returned = 'true' AND b.return_date > b.issue_date + INTERVAL '30 days';
   - `book_issues.csv`
   - `approvals.csv`
   - `logs.csv`
+ 
+## 📊 Key Findings
+- Fiction and Science are the most borrowed genres, while Philosophy and Drama see the least circulation.
+- Over 15% of issued books were returned late; several students returned books more than 30 days past due.
+- 10 students borrowed more than 8 books each, highlighting frequent borrowers.
+- More than 20 book titles have fewer than 3 copies left, indicating stock replenishment needs.
+- Librarian ID 3 processed the highest number of student approvals.
+- Several approvals have missing or invalid statuses, suggesting potential workflow issues.
+- About 18% of students registered on weekends, highlighting valuable weekend activity.
+- At least 15% of books have never been issued; some students registered but never borrowed books.
+
+## 📈 Suggested Reports
+- **Monthly Book Issue Trends** – Visualize the number of books issued each month.
+- **Top 10 Most Borrowed Books** – Identify books requiring restocking.
+- **Inactive Students Report** – List of students who registered but never borrowed books.
+- **Overdue Book Report** – Track students with unreturned or late books.
+- **Approval Workflow Summary** – Number of approvals per librarian and their statuses.
+- **Genre-Wise Circulation Report** – Number of issues per genre.
+- **Low Stock Alert** – Books with fewer than 3 copies remaining.
+- **Data Quality Check** – Approvals with invalid statuses, issues without matching students, or duplicate records. 
 
 ## 👩‍💻 About the Author
 
 **Microsoft Certified Dynamics 365 professional**, Shayistha Abdulla is a Business Analyst with 9+ years of experience across Digital Marketing, CRM, PropTech, and IT Consulting.  
 She builds practical SQL portfolio projects based on real-world business use cases to demonstrate hands-on data analysis and reporting skills.
 
----
-
-## 🏁 Final Notes
-
-This project is ideal for:
-- Practicing SQL queries as a Business Analyst or Data Analyst
-- Interview preparation with real-case scenarios
-- Building a PostgreSQL-based SQL portfolio for GitHub
 
 
 
