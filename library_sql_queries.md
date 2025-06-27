@@ -3,8 +3,6 @@
 
 A comprehensive collection of 52 SQL queries grouped by category, written for a PostgreSQL-based Library Management System. These queries are designed to demonstrate Business Analyst-level use cases.
 
-(Queries 1–20 included here for brevity. Let me know to extend all 52.)
-
 ## 🧭 1. Data Exploration Queries
 
 1. Students who registered in 2025
